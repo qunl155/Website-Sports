@@ -19,10 +19,10 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        //$this->validate($request,[
-        //     'email' => 'required|email:filter',
-        //     'password' => 'required'
-        // ]);
+        //// $this->validate($request,[
+        ////     'email' => 'required|email:filter',
+        ////     'password' => 'required'
+        //// ]);
         $request->validate([
             'email' => 'required|email:filter',
             'password' => 'required'
