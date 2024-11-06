@@ -13,16 +13,12 @@ class LoginController extends Controller
     {
         return view('admin.users.login', [
             'title' => 'Bảng nhập hệ thống',
-            'name' => 'Hieu khong ngu'
+            'name' => 'LOGIN ADMIN'
         ]);
     }
 
     public function store(Request $request)
     {
-        //// $this->validate($request,[
-        ////     'email' => 'required|email:filter',
-        ////     'password' => 'required'
-        //// ]);
         $request->validate([
             'email' => 'required|email:filter',
             'password' => 'required'

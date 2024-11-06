@@ -10,7 +10,8 @@ class MainController extends Controller
     public function index()
     {
         return view('admin.home', [
-            'title' => 'Đây là trang Admin'
+            'title' => 'Đây là trang ADMIN',
+            'name' => 'Quản lý'
         ]);
     }
 }
