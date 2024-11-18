@@ -23,27 +23,27 @@
 
 
 
-            <tr>
-                <td>{{$value->id}}</td>
-                <td>{{$value->name}}</td>
-                <td>{{$value->menu->name}}</td>
-                <td>{{$value->price}}</td>
-                <td>{{$value->price_sale}}</td>
-                <td>{!! \App\Helpers\Helper::active($value->active) !!}</td>
-                <td>{{$value->updated_at}}</td>
+        <tr>
+            <td>{{$value->id}}</td>
+            <td>{{$value->name}}</td>
+            <td>{{$value->menu->name}}</td>
+            <td>{{$value->price}}</td>
+            <td>{{$value->price_sale}}</td>
+            <td>{!! \App\Helpers\Helper::active($value->active) !!}</td>
+            <td>{{$value->updated_at}}</td>
 
 
-                <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/products/edit/'{{$value->id}}">
-                        <i class="fa-solid fa-user-pen"></i>
-                    </a>
-                    <a href="#" class="btn btn-danger btn-sm"
-                        onclick="removeRow({{$value->id}}, '/admin/products/destroy')">
-                        <i class="fa-solid fa-trash"></i>
-                    </a>
-                </td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/admin/products/edit/{{$value->id}}">
+                    <i class="fa-solid fa-user-pen"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-sm"
+                    onclick="removeRow({{$value->id}}, '/admin/products/destroy')">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </td>
 
-        @endforeach
+            @endforeach
     </tbody>
     </tr>
 </table>

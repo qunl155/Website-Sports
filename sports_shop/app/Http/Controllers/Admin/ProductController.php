@@ -9,6 +9,7 @@ use App\Http\Requests\Product\ProductRequest;
 use App\Http\Services\Product\ProductAdminService;
 use App\Models\Product;
 use Exception;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Log;
 use Session;
@@ -107,15 +108,37 @@ class ProductController extends Controller
         ]);
     }
 
-
-    public function update2(Product $product, ProductRequest $request)
+    public function update1($request, $product)
     {
-        //$this->update1($request, $product);
+        $isValidPrice = $this->isValidPrice($request);
+        if ($isValidPrice == false) {
+            return false;
+        }
 
-        return redirect('/admin/products/list');
+        try {
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Cập nhật thành công');
+        } catch (Exception $err) {
+            Session::flash('error', 'Cập nhật thất bại');
+            Log::info($err->getMessage());
+            return false;
+        }
+        return true;
     }
 
+    //x
+    public function update2(Product $product, ProductRequest $request)
+    {
+        $result = $this->update1($request, $product);
 
+        if ($result) {
+            return redirect('/admin/products/list');
+        }
+        return redirect()->back();
+    }
+
+    //form sửa
     public function fix(Product $product)
     {
         return view('admin.product.edit', [
@@ -124,5 +147,32 @@ class ProductController extends Controller
             'product' => $product,
             'menus' => $this->getMenu()
         ]);
+    }
+
+    public function delete($request)
+    {
+        $product = Product::where('id', $request->input('id'))->first();
+        if ($product) {
+            $product->delete();
+            return true;
+        }
+        return false;
+    }
+
+    //xoa
+    public function destroy(Request $request)
+    {
+        $result = $this->delete($request);
+        if ($result) {
+            return response()->json([
+                "check" => true,
+                'message' => "Xoá thành công sản phẩm"
+            ]);
+        } else {
+            return response()->json([
+                "check" => false,
+                'message' => "Xoá thất bại"
+            ]);
+        }
     }
 }

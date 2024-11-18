@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <style>
-        .list-menu {
-            background-color: pink;
-        }
+    .list-menu {
+        background-color: pink;
+    }
     </style>
 
     <!-- Brand Logo -->
