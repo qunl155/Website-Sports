@@ -1,4 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <style>
+        .list-menu {
+            background-color: pink;
+        }
+    </style>
+
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
         <img src="/template/admin/dist/img/logo-Sơn-Tùng-M-TP-Entertainment-7-1.jpg" alt="AdminLTE Logo"
@@ -37,7 +43,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link active list-menu">
                         <i class="fa-solid fa-list"></i>
                         <p>
                             Danh mục
@@ -59,6 +65,35 @@
                         </li>
                     </ul>
                 </li>
+
+
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active list-menu">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>
+                            Sản phẩm
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/products/add" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm Sản phẩm</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/products/list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách Sản phẩm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

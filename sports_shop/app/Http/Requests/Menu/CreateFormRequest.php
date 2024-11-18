@@ -40,4 +40,6 @@ class CreateFormRequest extends FormRequest
             'name.required' => 'Vui lòng nhập tên danh mục'
         ];
     }
+
+
 }
