@@ -4,19 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Services\UploadService;
-
+use Exception;
 class UploadController extends Controller
 {
-    protected $upload;
-    public function __construct(UploadService $upload)
+    public function store($request)
     {
-        $this->upload = $upload;
+        if ($request->hasFile('file')) {
+            try {
+                $name = $request->file('file')->getClientOriginalName();
+
+                $pathFull = 'uploads/' . date("Y/m/d");
+                $request->file('file')->storeAs(
+                    'public/' . $pathFull,
+                    $name
+                );
+                return '/storage/' . $pathFull . '/' . $name;
+
+            } catch (Exception $err) {
+                return false;
+            }
+        }
+
     }
 
-    public function store(Request $request)
+    public function store2(Request $request)
     {
-        $url = $this->upload->store($request);
+        $url = $this->store($request);
         if ($url != false) {
             return response()->json([
                 'error' => false,

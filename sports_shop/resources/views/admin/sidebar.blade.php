@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <style>
-    .list-menu {
-        background-color: pink;
-    }
+        .list-menu {
+            background-color: pink;
+        }
     </style>
 
     <!-- Brand Logo -->
@@ -92,7 +92,29 @@
                 </li>
 
 
-
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active list-menu">
+                        <i class="fa-solid fa-images"></i>
+                        <p>
+                            Slider
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/sliders/add" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/sliders/list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách Slider</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </nav>

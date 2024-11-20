@@ -50,7 +50,7 @@ class ProductController extends Controller
         }
         try {
             //Loai trừ
-            $request->except('_token');
+            #$request->except('_token');
             Product::create([
                 'name' => (string) $request->input('name'),
                 'description' => (string) $request->input('description'),

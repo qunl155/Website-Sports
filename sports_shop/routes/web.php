@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Services\Menu\MenuService;
 
@@ -40,7 +41,17 @@ Route::middleware(['auth'])->group(function () {
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
-        Route::post('upload/services', [UploadController::class, 'store']);
+
+        #slider
+        Route::prefix('sliders')->group(function () {
+            Route::get('add', [SliderController::class, 'create']);
+            Route::post('add', [SliderController::class, 'store']);
+            Route::get('list', [SliderController::class, 'index']);
+            Route::get('edit/{slider}', [SliderController::class, 'fix']);
+            Route::post('edit/{slider}', [SliderController::class, 'update2']);
+            Route::DELETE('destroy', [SliderController::class, 'destroy']);
+        });
+        Route::post('upload/services', [UploadController::class, 'store2']);
     });
 
 });
