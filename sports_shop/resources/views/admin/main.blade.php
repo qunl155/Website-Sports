@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('admin.head')
+    @include('admin.header')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -47,7 +47,7 @@
 
 
         <!-- Main Sidebar Container -->
-        @include('admin/sidebar')
+        @include('admin.sidebar')
         <!-- /.Main Sidebar Container -->
 
 
@@ -78,15 +78,9 @@
 
                             </div>
                             <!-- /.card -->
-
-
-
                         </div>
                         <!--/.col (left) -->
                         <!-- right column -->
-                        <div class="col-md-6">
-
-                        </div>
                         <!--/.col (right) -->
                     </div>
                     <!-- /.row -->

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Helpers;
-
+use Illuminate\Support\Str;
 class Helper
 {
     public static function menu($menus, $parent_id = 0, $char = '')
@@ -39,5 +39,48 @@ class Helper
     {
         return $active == 0 ? '<span class="btn btn-danger btn-xs">NO</span>'
             : '<span class="btn btn-success btn-xs">YES</span>';
+    }
+
+    public static function menus($data, $parent_id = 0)
+    {
+        $html = '';
+        foreach ($data as $key => $value) {
+            if ($value->parent_id == $parent_id) {
+                $html .= '
+                    <li>
+                        <a href="/danh-muc/' . $value->id . '-' . Str::of($value->name)->slug('-') . '.html">
+                            ' . $value->name . '
+                        </a>';
+
+                unset($data[$key]);
+                if (self::isChild($data, $value->id)) {
+                    $html .= '<ul class = "sub-menu">';
+                    $html .= self::menus($data, $value->id);
+                    $html .= '</ul>';
+                }
+                $html .= '</li>
+                ';
+            }
+        }
+        return $html;
+    }
+
+    public static function isChild($data, $id)
+    {
+        foreach ($data as $value) {
+            if ($value->parent_id == $id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static function price($price = 0, $price_sale = 0)
+    {
+        if ($price != 0)
+            return number_format($price);
+        if ($price_sale != 0)
+            return number_format($price_sale);
+
     }
 }

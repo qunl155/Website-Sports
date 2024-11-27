@@ -1,6 +1,6 @@
 @extends('admin.main')
 
-@section('head')
+@section('header')
 <script src="../assets/vendor/ckeditor5.js"></script>
 <link rel="stylesheet" href="../../assets/vendor/ckeditor5.css">
 @endsection
@@ -15,10 +15,10 @@
                 <label>Tên danh mục</label>
                 <input list="list_option" type="text" name="name" class="form-control" placeholder="Nhập tên danh mục">
                 <datalist id="list_option">
-                    <option value="Quần áo thể thao Manchester United">
-                    <option value="Quần áo thể thao Chelsea">
-                    <option value="Quần áo thể thao Nike">
-                    <option value="Quần áo thể thao Jordan">
+                    <option value="Quần áo thể thao">
+                    <option value="Giày thể thao">
+                    <option value="Phụ kiện thể thao">
+                        <!-- <option value=""> -->
                 </datalist>
             </div>
 
@@ -28,7 +28,7 @@
                 <select class="form-control" name="parent_id" id="">
                     <option value="0">Danh mục cha</option>
                     @foreach ($menus as $menu)
-                        <option value="{{$menu->id}} "> {{$menu->name}} </option>
+                    <option value="{{$menu->id}} "> {{$menu->name}} </option>
                     @endforeach
                 </select>
             </div>
@@ -89,28 +89,28 @@
         </script>
 
 <script type="module">
-    import {
-        ClassicEditor,
-        Essentials,
-        Paragraph,
-        Bold,
-        Italic,
-        Font
-    } from 'ckeditor5';
+import {
+    ClassicEditor,
+    Essentials,
+    Paragraph,
+    Bold,
+    Italic,
+    Font
+} from 'ckeditor5';
 
-    ClassicEditor
-        .create(document.querySelector('#content'), {
-            plugins: [Essentials, Paragraph, Bold, Italic, Font],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
-        })
-        .then(content => {
-            window.content = content;
-        })
-        .catch(error => {
-            console.error(error);
-        });
+ClassicEditor
+    .create(document.querySelector('#content'), {
+        plugins: [Essentials, Paragraph, Bold, Italic, Font],
+        toolbar: [
+            'undo', 'redo', '|', 'bold', 'italic', '|',
+            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+        ]
+    })
+    .then(content => {
+        window.content = content;
+    })
+    .catch(error => {
+        console.error(error);
+    });
 </script>
 @endsection

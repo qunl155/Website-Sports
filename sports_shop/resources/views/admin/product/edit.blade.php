@@ -1,7 +1,8 @@
 @extends('admin.main')
 
-@section('head')
-<script src="/ckeditor/ckeditor.js"></script>
+@section('header')
+<script src="../assets/vendor/ckeditor5.js"></script>
+<link rel="stylesheet" href="../../assets/vendor/ckeditor5.css">
 @endsection
 
 @section('content')
@@ -98,7 +99,38 @@
 @endsection
 
 @section('footer')
-<script>
-CKEDITOR.replace('content');
+<script type="importmap">
+    {
+                "imports": {
+                    "ckeditor5": "../../assets/vendor/ckeditor5.js",
+                    "ckeditor5/": "../../assets/vendor/"
+                }
+            }
+        </script>
+
+<script type="module">
+import {
+    ClassicEditor,
+    Essentials,
+    Paragraph,
+    Bold,
+    Italic,
+    Font
+} from 'ckeditor5';
+
+ClassicEditor
+    .create(document.querySelector('#content'), {
+        plugins: [Essentials, Paragraph, Bold, Italic, Font],
+        toolbar: [
+            'undo', 'redo', '|', 'bold', 'italic', '|',
+            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+        ]
+    })
+    .then(content => {
+        window.content = content;
+    })
+    .catch(error => {
+        console.error(error);
+    });
 </script>
 @endsection
