@@ -175,4 +175,16 @@ class ProductController extends Controller
             ]);
         }
     }
+
+    const LIMIT = 16;
+    public function get2($load = null)
+    {
+        return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->orderByDesc('id')
+            ->when($load != null, function ($query) use ($load) {
+                $query->offset($load * self::LIMIT);
+            })
+            ->limit(self::LIMIT)
+            ->get();
+    }
 }

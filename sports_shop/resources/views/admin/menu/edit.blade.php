@@ -1,6 +1,6 @@
 @extends('admin.main')
 
-@section('head')
+@section('header')
 <script src="../assets/vendor/ckeditor5.js"></script>
 <link rel="stylesheet" href="../../assets/vendor/ckeditor5.css">
 @endsection
@@ -16,10 +16,10 @@
                 <input list="list_option" type="text" value="{{$menu->name}}" name="name" class="form-control"
                     placeholder="Nhập tên danh mục">
                 <datalist id="list_option">
-                    <option value="Quần áo thể thao Manchester United">
-                    <option value="Quần áo thể thao Chelsea">
-                    <option value="Quần áo thể thao Nike">
-                    <option value="Quần áo thể thao Jordan">
+                    <option value="Quần áo thể thao">
+                    <option value="Giày thể thao">
+                    <option value="Phụ kiện thể thao">
+                        <!-- <option value=""> -->
                 </datalist>
             </div>
 
